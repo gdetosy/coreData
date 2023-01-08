@@ -69,12 +69,25 @@ class CategoryViewController: UITableViewController {
     
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }
+        if editingStyle == .delete,
+            let name = categories[indexPath.row].name
+            {
+                let request: NSFetchRequest<CategoryModel> = CategoryModel.fetchRequest()
+                request.predicate =  NSPredicate(format: "name==\(name)")
+                if let categories = try? context.fetch(request) {
+                    for categorie in categories {
+                        context.delete(categorie)
+                    }
+                    self.categories.remove(at: indexPath.row)
+                    saveCategories()
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                    
+                }
+            }
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//        } else if editingStyle == .insert {
+//            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        
     }
     
     
