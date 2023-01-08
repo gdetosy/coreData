@@ -58,16 +58,32 @@
 		96FEB283296ADA0100B07E30 /* coreDatas */ = {
 			isa = PBXGroup;
 			children = (
-				96FEB284296ADA0100B07E30 /* AppDelegate.swift */,
-				96FEB286296ADA0100B07E30 /* SceneDelegate.swift */,
+				96FEB29B296ADB3000B07E30 /* Models */,
 				96FEB288296ADA0100B07E30 /* ViewController.swift */,
 				96FEB28A296ADA0100B07E30 /* Main.storyboard */,
 				96FEB290296ADA0300B07E30 /* Assets.xcassets */,
 				96FEB292296ADA0300B07E30 /* LaunchScreen.storyboard */,
+				96FEB29C296ADB4500B07E30 /* AppDelegates */,
 				96FEB295296ADA0300B07E30 /* Info.plist */,
-				96FEB28D296ADA0100B07E30 /* coreDatas.xcdatamodeld */,
 			);
 			path = coreDatas;
+			sourceTree = "<group>";
+		};
+		96FEB29B296ADB3000B07E30 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				96FEB28D296ADA0100B07E30 /* coreDatas.xcdatamodeld */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		96FEB29C296ADB4500B07E30 /* AppDelegates */ = {
+			isa = PBXGroup;
+			children = (
+				96FEB284296ADA0100B07E30 /* AppDelegate.swift */,
+				96FEB286296ADA0100B07E30 /* SceneDelegate.swift */,
+			);
+			path = AppDelegates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
