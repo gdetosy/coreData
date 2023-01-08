@@ -19,6 +19,12 @@ class CategoryViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+    @IBAction func addNewCategory(_ sender: UIBarButtonItem) {
+    }
+    
+    
+    
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

@@ -30,7 +30,13 @@
                             <outlet property="delegate" destination="AuR-IJ-VJ7" id="5D2-3b-Gmi"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Categories" id="jLD-Xh-3dv"/>
+                    <navigationItem key="navigationItem" title="Categories" id="jLD-Xh-3dv">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="vQH-co-bMd">
+                            <connections>
+                                <action selector="addNewCategory:" destination="AuR-IJ-VJ7" id="BWC-M0-gTy"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="YZ5-W5-jPt" kind="show" identifier="showItemsSegue" id="hBN-EH-mqh"/>
                     </connections>
@@ -47,9 +53,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="VKM-3S-1O0">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="YZ5-W5-jPt" id="qPQ-DH-w2j"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="hRZ-uj-CBK">
-                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                <rect key="frame" x="0.0" y="94" width="393" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hRZ-uj-CBK" id="zdL-a9-Ot5">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
@@ -62,9 +76,27 @@
                             <outlet property="delegate" destination="YZ5-W5-jPt" id="wGW-2L-gWi"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="ShK-Mm-2vA"/>
+                    <navigationItem key="navigationItem" id="ShK-Mm-2vA">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Nwb-S8-9IP">
+                            <connections>
+                                <action selector="addNewItem:" destination="YZ5-W5-jPt" id="JBB-Bf-GR7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="taX-Jk-gnt" id="EoF-CK-baX"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l0o-PJ-A0D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="taX-Jk-gnt">
+                    <connections>
+                        <outlet property="delegate" destination="YZ5-W5-jPt" id="5D1-Kh-nvN"/>
+                        <outlet property="searchBar" destination="VKM-3S-1O0" id="0pJ-gk-PWg"/>
+                        <outlet property="searchContentsController" destination="YZ5-W5-jPt" id="ciT-CJ-EsJ"/>
+                        <outlet property="searchResultsDataSource" destination="YZ5-W5-jPt" id="hcW-Ah-uHs"/>
+                        <outlet property="searchResultsDelegate" destination="YZ5-W5-jPt" id="td5-lu-g1A"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="965" y="-62"/>
         </scene>
