@@ -83,20 +83,8 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="searchDisplayController" destination="taX-Jk-gnt" id="EoF-CK-baX"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l0o-PJ-A0D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="taX-Jk-gnt">
-                    <connections>
-                        <outlet property="delegate" destination="YZ5-W5-jPt" id="5D1-Kh-nvN"/>
-                        <outlet property="searchBar" destination="VKM-3S-1O0" id="0pJ-gk-PWg"/>
-                        <outlet property="searchContentsController" destination="YZ5-W5-jPt" id="ciT-CJ-EsJ"/>
-                        <outlet property="searchResultsDataSource" destination="YZ5-W5-jPt" id="hcW-Ah-uHs"/>
-                        <outlet property="searchResultsDelegate" destination="YZ5-W5-jPt" id="td5-lu-g1A"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="965" y="-62"/>
         </scene>
