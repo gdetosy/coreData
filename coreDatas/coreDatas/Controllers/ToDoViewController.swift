@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 class ToDoViewController: UITableViewController {
-
+    var selectedCategory: CategoryModel?
     override func viewDidLoad() {
         super.viewDidLoad()
 
