@@ -89,43 +89,46 @@ class ToDoViewController: UITableViewController {
             }
         }
     }
-        private func getData() {
+
+    private func getData() {
+        loadItem()
+    }
+
+    private func saveItems() {
+        do {
+            try context.save()
+        } catch {
+            print("Error save context")
+        }
+    }
+
+    private func loadItem(with request: NSFetchRequest<ItemModel> = ItemModel.fetchRequest(), predicate: NSPredicate? = nil) {
+        guard let name = selectedCategory?.name else { return }
+        let categoryPredicate = NSPredicate(format: "parentCategory.name MATCHES %@", name)
+        if let predicate = predicate {
+            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate, categoryPredicate])
+        } else {
+            request.predicate = categoryPredicate
+        }
+        do { itemsArray = try context.fetch(request) }
+        catch {
+            print("error")
+        }
+        tableView.reloadData()
+    }
+}
+
+extension ToDoViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
             loadItem()
-        }
-        private func saveItems() {
-            do {
-                try context.save()
-            } catch {
-                print("Error save context")
-            }
-        }
-        private func loadItem(with request: NSFetchRequest<ItemModel> = ItemModel.fetchRequest(), predicate: NSPredicate? = nil) {
-            guard let name = selectedCategory?.name else { return }
-            let categoryPredicate = NSPredicate(format: "parentCategory.name MATCHES %@", name)
-            if let predicate = predicate {
-                request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate, categoryPredicate])
-            } else {
-                request.predicate = categoryPredicate
-            }
-            do { itemsArray = try context.fetch(request) }
-            catch {
-                print("error")
-            }
-            tableView.reloadData()
+            searchBar.resignFirstResponder()
+        } else {
+            let request: NSFetchRequest<ItemModel> = ItemModel.fetchRequest()
+            let searchPredicate = NSPredicate(format: "title CONTAINS %@", searchText)
+            request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+            loadItem(with: request, predicate: searchPredicate)
         }
     }
-    extension ToDoViewController: UISearchBarDelegate {
-        func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-            
-            if searchText.isEmpty {
-                loadItem()
-                searchBar.resignFirstResponder()
-            } else {
-                let request: NSFetchRequest<ItemModel> = ItemModel.fetchRequest()
-                let searchPredicate = NSPredicate(format: "title CONTAINS %@", searchText)
-                request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-                loadItem(with: request, predicate: searchPredicate)
-            }
-        }
-    }
+}
   
